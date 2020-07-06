@@ -2,12 +2,13 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 printWeather = (location) => {
-    geocode(location, (error, {latitude, longitude, location}) => {
+    geocode(location, (error, response) => {
         if (error)
         {
             console.log('Error', error)
             return
         }
+        const {latitude, longitude, Location} = response
         forecast(longitude, latitude, (error, forecastData) => {
             if (error)
             {
